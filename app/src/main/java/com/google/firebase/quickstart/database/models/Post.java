@@ -14,11 +14,11 @@ public class Post {
     public String author;
     public String title;
     public String body;
-//    public int voteCount = 0;
-//    public Map<String, Boolean> upvotes = new HashMap<>();
-//    public Map<String, Boolean> downvotes = new HashMap<>();
-    public int starCount = 0;
-    public Map<String, Boolean> stars = new HashMap<>();
+    public int voteCount = 0;
+    public Map<String, Boolean> upvotes = new HashMap<>();
+    public Map<String, Boolean> downvotes = new HashMap<>();
+//    public int starCount = 0;
+//    public Map<String, Boolean> stars = new HashMap<>();
 
     public Post() {
         // Default constructor required for calls to DataSnapshot.getValue(Post.class)
@@ -39,11 +39,11 @@ public class Post {
         result.put("author", author);
         result.put("title", title);
         result.put("body", body);
-        result.put("starCount", starCount);
-        result.put("stars", stars);
-//        result.put("voteCount", voteCount);
-//        result.put("upvotes", upvotes);
-//        result.put("downvotes", downvotes);
+//        result.put("starCount", starCount);
+//        result.put("stars", stars);
+        result.put("voteCount", voteCount);
+        result.put("upvotes", upvotes);
+        result.put("downvotes", downvotes);
 
         return result;
     }
