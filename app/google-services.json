@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1060970317302",
+    "firebase_url": "https://citycouncilprototype.firebaseio.com",
+    "project_id": "citycouncilprototype",
+    "storage_bucket": "citycouncilprototype.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1060970317302:android:fcfef757a832647b",
+        "android_client_info": {
+          "package_name": "com.google.firebase.quickstart.database"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1060970317302-ha0jmqo9k06v746l3urg8oj27tdqr5vu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfe2-NBKhf8ZAQrov_bbuZcHoTcqLL_QI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
