@@ -31,7 +31,7 @@
             <ImageView
                 android:id="@+id/upvote"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:background="?attr/selectableItemBackground"
                 app:srcCompat="@drawable/ic_keyboard_arrow_up_black_24dp" />
@@ -46,7 +46,7 @@
             <ImageView
                 android:id="@+id/downvote"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:background="?attr/selectableItemBackground"
                 app:srcCompat="@drawable/ic_keyboard_arrow_down_black_24dp" />
