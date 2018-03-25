@@ -12,19 +12,30 @@
         android:padding="10dp">
 
         <include
-            android:id="@+id/post_author_layout"
-            layout="@layout/include_post_author"
+            android:id="@+id/post_text"
+            layout="@layout/include_post_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true" />
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/post_report"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/post_text"
+            android:layout_alignParentBottom="false"
+            android:layout_below="@+id/post_text"
+            android:gravity="center_vertical"
+            android:text="Report" />
 
         <LinearLayout
             android:id="@+id/vote_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/post_author_layout"
             android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/post_author_layout"
+            android:layout_below="@+id/post_text"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -52,14 +63,6 @@
                 app:srcCompat="@drawable/ic_keyboard_arrow_down_black_24dp" />
 
         </LinearLayout>
-
-        <include layout="@layout/include_post_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/post_author_layout"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp" />
 
     </RelativeLayout>
 

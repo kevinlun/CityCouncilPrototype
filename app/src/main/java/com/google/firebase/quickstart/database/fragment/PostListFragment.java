@@ -115,6 +115,14 @@ public abstract class PostListFragment extends Fragment {
                 }
 
                 // Bind Post to ViewHolder, setting OnClickListener for the star button
+                viewHolder.bindToPostReport(model, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View reportView) {
+                        System.out.println("REPORTED");
+                    }
+                });
+
+                // Bind Post to ViewHolder, setting OnClickListener for the star button
                 viewHolder.bindToPostUpvote(model, new View.OnClickListener() {
                     @Override
                     public void onClick(View upvoteView) {

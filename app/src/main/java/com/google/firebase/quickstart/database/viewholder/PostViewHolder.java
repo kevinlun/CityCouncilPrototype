@@ -12,6 +12,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
     public TextView titleView;
     public TextView authorView;
+    public TextView reportView;
     public ImageView upvoteView;
     public TextView numVotesView;
     public ImageView downvoteView;
@@ -22,27 +23,37 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
         titleView = itemView.findViewById(R.id.post_title);
         authorView = itemView.findViewById(R.id.post_author);
+        reportView = itemView.findViewById(R.id.post_report);
         upvoteView = itemView.findViewById(R.id.upvote);
         numVotesView = itemView.findViewById(R.id.post_num_votes);
         downvoteView = itemView.findViewById(R.id.downvote);
         bodyView = itemView.findViewById(R.id.post_body);
     }
 
-    public void bindToPostUpvote(Post post, View.OnClickListener starClickListener) {
+    public void bindToPostReport(Post post, View.OnClickListener reportClickListener) {
         titleView.setText(post.title);
-        authorView.setText(post.author);
+//        authorView.setText(post.author);
         numVotesView.setText(String.valueOf(post.voteCount));
         bodyView.setText(post.body);
 
-        upvoteView.setOnClickListener(starClickListener);
+        reportView.setOnClickListener(reportClickListener);
     }
 
-    public void bindToPostDownvote(Post post, View.OnClickListener starClickListener) {
+    public void bindToPostUpvote(Post post, View.OnClickListener upvoteClickListener) {
         titleView.setText(post.title);
-        authorView.setText(post.author);
+//        authorView.setText(post.author);
         numVotesView.setText(String.valueOf(post.voteCount));
         bodyView.setText(post.body);
 
-        downvoteView.setOnClickListener(starClickListener);
+        upvoteView.setOnClickListener(upvoteClickListener);
+    }
+
+    public void bindToPostDownvote(Post post, View.OnClickListener downvoteClickListener) {
+        titleView.setText(post.title);
+//        authorView.setText(post.author);
+        numVotesView.setText(String.valueOf(post.voteCount));
+        bodyView.setText(post.body);
+
+        downvoteView.setOnClickListener(downvoteClickListener);
     }
 }
