@@ -1,5 +1,7 @@
 package com.google.firebase.quickstart.database.fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -119,6 +121,7 @@ public abstract class PostListFragment extends Fragment {
                     @Override
                     public void onClick(View reportView) {
                         System.out.println("REPORTED");
+                        onReportClicked();
                     }
                 });
 
@@ -152,6 +155,20 @@ public abstract class PostListFragment extends Fragment {
             }
         };
         mRecycler.setAdapter(mAdapter);
+    }
+
+    private void onReportClicked() {
+        new AlertDialog.Builder(getActivity())
+                .setTitle(R.string.report_post)
+                .setSingleChoiceItems(R.array.report_options, 0, null)
+                .setPositiveButton(R.string.report_positive, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        dialog.dismiss();
+                        int selectedPosition = ((AlertDialog)dialog).getListView().getCheckedItemPosition();
+                        // Do something useful withe the position of the selected radio button
+                    }
+                })
+                .show();
     }
 
     // [START post_stars_transaction]
