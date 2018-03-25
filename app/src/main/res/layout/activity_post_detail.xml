@@ -10,13 +10,6 @@
     tools:context="com.google.firebase.quickstart.database.PostDetailActivity">
 
     <include
-        android:id="@+id/post_author_layout"
-        layout="@layout/include_post_author"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true" />
-
-    <include
         android:id="@+id/post_text_layout"
         layout="@layout/include_post_text"
         android:layout_width="wrap_content"
