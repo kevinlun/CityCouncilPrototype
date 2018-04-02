@@ -52,6 +52,9 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
     private LinearLayout mUpdateForm;
     private Button mUpdateStatusButton;
     private Button mPostStatusUpdateButton;
+    private TextView mResponseView;
+    private TextView mStatusView;
+    private TextView mResponseBodyView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +91,10 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         mUpdateStatusButton.setOnClickListener(this);
         mPostStatusUpdateButton = findViewById(R.id.button_post_update);
         mPostStatusUpdateButton.setOnClickListener(this);
+
+        mResponseView = findViewById(R.id.status_title);
+        mResponseBodyView = findViewById(R.id.status_body);
+        mStatusView = findViewById(R.id.status_text);
     }
 
     @Override
@@ -105,6 +112,9 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
 //                mAuthorView.setText(post.author);
                 mTitleView.setText(post.title);
                 mBodyView.setText(post.body);
+                mResponseView.setText("Official Response:");
+                mStatusView.setText("PENDING");
+                mResponseBodyView.setText("Pending response from government representatives");
                 // [END_EXCLUDE]
             }
 
@@ -157,6 +167,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         if(i==R.id.button_post_update)
         {
             updateStatus();
+            mUpdateForm.setVisibility(View.GONE);
         }
     }
 
