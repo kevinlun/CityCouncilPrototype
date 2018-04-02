@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,6 +56,9 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
     private TextView mResponseView;
     private TextView mStatusView;
     private TextView mResponseBodyView;
+    private EditText mResponseField;
+    private Spinner mStatus;
+    private Post postSnapshot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +99,9 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         mResponseView = findViewById(R.id.status_title);
         mResponseBodyView = findViewById(R.id.status_body);
         mStatusView = findViewById(R.id.status_text);
+
+        mResponseField = findViewById(R.id.response_field);
+        mStatus = findViewById(R.id.spinner_status);
     }
 
     @Override
@@ -201,12 +208,19 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                 });
     }
     private void updateStatus() {
-        // [START single_value_read]
-        Log.d(TAG, "UPDATING STATUS");
-        Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("status", "Completed");
-        childUpdates.put("response", "We did it");
-        mPostReference.updateChildren(childUpdates);
+        final String uid = getUid();
+        mPostReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                     mPostReference.child("status").setValue(mStatus.getSelectedItem().toString());
+                     mPostReference.child("response").setValue(mResponseField.getText().toString());
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
     }
 
 
