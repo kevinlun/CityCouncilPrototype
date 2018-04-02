@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1060970317302-a0dtbigf123dmcg8tp97d9gp9jvt9lnf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.google.firebase.quickstart.database",
+            "certificate_hash": "fcb9261a67b91337cb0828e8e44c53f1fdd92027"
+          }
+        },
+        {
           "client_id": "1060970317302-ha0jmqo9k06v746l3urg8oj27tdqr5vu.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,20 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1060970317302-ha0jmqo9k06v746l3urg8oj27tdqr5vu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1060970317302-umoujv73rnbva2rev2lo348pmd3ij5sr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.google.firebase.quickstart.DatabaseExample"
+              }
+            }
+          ]
         },
         "ads_service": {
           "status": 2
