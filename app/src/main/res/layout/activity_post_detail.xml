@@ -43,7 +43,8 @@
             android:layout_marginTop="0dp"
             android:orientation="vertical"
             android:visibility="visible"
-            android:weightSum="1.0">
+            android:weightSum="1.0"
+            android:paddingTop="10dp">
 
             <TextView
                 android:id="@+id/status_title"
@@ -67,6 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:textStyle="bold"
                 tools:text="We'll get to it!" />
         </LinearLayout>
 
@@ -84,6 +86,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="0dp"
             android:orientation="vertical"
+            android:visibility="gone"
             android:weightSum="1.0">
 
             <LinearLayout

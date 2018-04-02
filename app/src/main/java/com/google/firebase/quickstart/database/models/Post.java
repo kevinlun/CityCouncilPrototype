@@ -17,6 +17,8 @@ public class Post {
     public int voteCount = 0;
     public Map<String, Boolean> upvotes = new HashMap<>();
     public Map<String, Boolean> downvotes = new HashMap<>();
+    public String status;
+    public String response;
 //    public int starCount = 0;
 //    public Map<String, Boolean> stars = new HashMap<>();
 
@@ -24,11 +26,13 @@ public class Post {
         // Default constructor required for calls to DataSnapshot.getValue(Post.class)
     }
 
-    public Post(String uid, String author, String title, String body) {
+    public Post(String uid, String author, String title, String body, String status, String response) {
         this.uid = uid;
         this.author = author;
         this.title = title;
         this.body = body;
+        this.status = status;
+        this.response = response;
     }
 
     // [START post_to_map]
@@ -44,6 +48,9 @@ public class Post {
         result.put("voteCount", voteCount);
         result.put("upvotes", upvotes);
         result.put("downvotes", downvotes);
+        result.put("status", status);
+        result.put("response", response);
+
 
         return result;
     }

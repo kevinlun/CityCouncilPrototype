@@ -86,7 +86,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         mCommentsRecycler.setLayoutManager(new LinearLayoutManager(this));
 
         mUpdateForm = findViewById(R.id.govt_form);
-       // mUpdateForm.setVisibility(View.GONE);
+        mUpdateForm.setVisibility(View.GONE);
         mUpdateStatusButton = findViewById(R.id.button_update_status);
         mUpdateStatusButton.setOnClickListener(this);
         mPostStatusUpdateButton = findViewById(R.id.button_post_update);
@@ -113,8 +113,10 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                 mTitleView.setText(post.title);
                 mBodyView.setText(post.body);
                 mResponseView.setText("Official Response:");
-                mStatusView.setText("PENDING");
-                mResponseBodyView.setText("Pending response from government representatives");
+                if(post.status != null)
+                    mStatusView.setText(post.status);
+                if(post.response != null)
+                    mResponseBodyView.setText(post.response);
                 // [END_EXCLUDE]
             }
 
@@ -202,8 +204,8 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         // [START single_value_read]
         Log.d(TAG, "UPDATING STATUS");
         Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("Status", "Completed");
-        childUpdates.put("Response", "We did it");
+        childUpdates.put("status", "Completed");
+        childUpdates.put("response", "We did it");
         mPostReference.updateChildren(childUpdates);
     }
 
