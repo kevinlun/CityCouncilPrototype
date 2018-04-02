@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,7 +25,9 @@ import com.google.firebase.quickstart.database.models.Comment;
 import com.google.firebase.quickstart.database.models.Post;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PostDetailActivity extends BaseActivity implements View.OnClickListener {
 
@@ -32,6 +35,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
 
     public static final String EXTRA_POST_KEY = "post_key";
 
+    private DatabaseReference mDatabase;
     private DatabaseReference mPostReference;
     private DatabaseReference mCommentsReference;
     private ValueEventListener mPostListener;
@@ -45,6 +49,10 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
     private Button mCommentButton;
     private RecyclerView mCommentsRecycler;
 
+    private LinearLayout mUpdateForm;
+    private Button mUpdateStatusButton;
+    private Button mPostStatusUpdateButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +65,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         }
 
         // Initialize Database
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         mPostReference = FirebaseDatabase.getInstance().getReference()
                 .child("posts").child(mPostKey);
         mCommentsReference = FirebaseDatabase.getInstance().getReference()
@@ -73,6 +82,12 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         mCommentButton.setOnClickListener(this);
         mCommentsRecycler.setLayoutManager(new LinearLayoutManager(this));
 
+        mUpdateForm = findViewById(R.id.govt_form);
+       // mUpdateForm.setVisibility(View.GONE);
+        mUpdateStatusButton = findViewById(R.id.button_update_status);
+        mUpdateStatusButton.setOnClickListener(this);
+        mPostStatusUpdateButton = findViewById(R.id.button_post_update);
+        mPostStatusUpdateButton.setOnClickListener(this);
     }
 
     @Override
@@ -133,6 +148,16 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         if (i == R.id.button_post_comment) {
             postComment();
         }
+        if (i == R.id.button_update_status) {
+           if(mUpdateForm.getVisibility() == View.VISIBLE)
+               mUpdateForm.setVisibility(View.GONE);
+           else
+               mUpdateForm.setVisibility(View.VISIBLE);
+        }
+        if(i==R.id.button_post_update)
+        {
+            updateStatus();
+        }
     }
 
     private void postComment() {
@@ -162,6 +187,15 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                     }
                 });
     }
+    private void updateStatus() {
+        // [START single_value_read]
+        Log.d(TAG, "UPDATING STATUS");
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("Status", "Completed");
+        childUpdates.put("Response", "We did it");
+        mPostReference.updateChildren(childUpdates);
+    }
+
 
     private static class CommentViewHolder extends RecyclerView.ViewHolder {
 

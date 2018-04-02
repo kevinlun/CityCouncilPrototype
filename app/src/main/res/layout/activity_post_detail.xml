@@ -12,27 +12,27 @@
         android:id="@+id/form"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/post_text_layout"
         android:layout_marginTop="0dp"
         android:orientation="vertical"
         android:weightSum="1.0">
-    <include
-        android:id="@+id/post_text_layout"
-        layout="@layout/include_post_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp" />
-        <include
-            android:id="@+id/post_text_layout"
-            layout="@layout/include_response_text"
+
+        <TextView
+            android:id="@+id/post_title"
+            style="@style/TextAppearance.AppCompat.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp" />
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textStyle="bold"
+            tools:text="My First Post" />
 
+        <TextView
+            android:id="@+id/post_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            tools:text="@string/lorem" />
+        />
     <Button
         android:id="@+id/button_update_status"
         style="@style/Base.Widget.AppCompat.Button.Borderless"
@@ -41,47 +41,89 @@
         android:layout_gravity="center"
         android:text="Update Status" />
 
-    <LinearLayout
-        android:id="@+id/spinner_status"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="0dp"
-        android:orientation="horizontal"
-        android:weightSum="1.0">
+        <LinearLayout
+            android:id="@+id/govt_form"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp"
+            android:orientation="vertical"
+            android:weightSum="1.0">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Status:" />
+            <LinearLayout
+                android:id="@+id/status_form"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="0dp"
+                android:orientation="horizontal"
+                android:weightSum="1.0">
 
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/status_options"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Status:" />
+
+                <Spinner
+                    android:id="@+id/spinner_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/status_options" />
+
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Public response..."
+                android:inputType="textMultiLine" />
+
+            <Button
+                android:id="@+id/button_post_update"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Post Update" />
 
         </LinearLayout>
 
-        <EditText
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/response_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
+        android:orientation="vertical"
+        android:weightSum="1.0">
+        <TextView
+            android:id="@+id/status_title"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textMultiLine"
-            android:hint="Public response..."/>
+            android:textStyle="bold"
+            tools:text="Official Response:" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/status_text"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:text="Post Update" />
+            android:textStyle="bold"
+            android:textColor="@color/colorAccent"
+            tools:text="Pending" />
+        <TextView
+            android:id="@+id/status_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            tools:text="We'll get to it!" />
+    </LinearLayout>
 
         <LinearLayout
         android:id="@+id/comment_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@+id/post_text_layout"
         android:layout_marginTop="20dp"
         android:weightSum="1.0">
 
@@ -107,7 +149,6 @@
         android:id="@+id/recycler_comments"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/comment_form"
         tools:listitem="@layout/item_comment" />
 
     </LinearLayout>
