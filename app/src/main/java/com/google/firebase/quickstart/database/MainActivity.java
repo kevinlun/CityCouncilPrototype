@@ -28,7 +28,7 @@ import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.quickstart.database.fragment.MyPostsFragment;
-import com.google.firebase.quickstart.database.fragment.MyTopPostsFragment;
+import com.google.firebase.quickstart.database.fragment.TopPostsFragment;
 import com.google.firebase.quickstart.database.fragment.RecentPostsFragment;
 
 public class  MainActivity extends BaseActivity {
@@ -46,14 +46,14 @@ public class  MainActivity extends BaseActivity {
         // Create the adapter that will return a fragment for each section
         mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             private final Fragment[] mFragments = new Fragment[] {
+                    new TopPostsFragment(),
                     new RecentPostsFragment(),
                     new MyPostsFragment(),
-                    new MyTopPostsFragment(),
             };
             private final String[] mFragmentNames = new String[] {
-                    getString(R.string.heading_recent),
-                    getString(R.string.heading_my_posts),
-                    getString(R.string.heading_my_top_posts)
+                    getString(R.string.heading_top_posts),
+                    getString(R.string.heading_recent_posts),
+                    getString(R.string.heading_my_posts)
             };
             @Override
             public Fragment getItem(int position) {
