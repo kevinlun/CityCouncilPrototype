@@ -115,7 +115,6 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get Post object and use the values to update the UI
                 Post post = dataSnapshot.getValue(Post.class);
-                // [START_EXCLUDE]
 //                mAuthorView.setText(post.author);
                 mTitleView.setText(post.title);
                 mBodyView.setText(post.body);
@@ -124,21 +123,17 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                     mStatusView.setText(post.status);
                 if(post.response != null)
                     mResponseBodyView.setText(post.response);
-                // [END_EXCLUDE]
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 // Getting Post failed, log a message
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                // [START_EXCLUDE]
                 Toast.makeText(PostDetailActivity.this, "Failed to load post.",
                         Toast.LENGTH_SHORT).show();
-                // [END_EXCLUDE]
             }
         };
         mPostReference.addValueEventListener(postListener);
-        // [END post_value_event_listener]
 
         // Keep copy of post listener so we can remove it when app stops
         mPostListener = postListener;
@@ -146,6 +141,9 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         // Listen for comments
         mAdapter = new CommentAdapter(this, mCommentsReference);
         mCommentsRecycler.setAdapter(mAdapter);
+
+        checkIfGovt();
+
     }
 
     @Override
@@ -180,6 +178,28 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
         }
     }
 
+    private void checkIfGovt()
+    {
+        final String uid = getUid();
+        FirebaseDatabase.getInstance().getReference().child("users").child(uid)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // Get user information
+                       User user = dataSnapshot.getValue(User.class);
+                       Log.d(TAG, "IsGovt: " + user.isGovt.equals("false"));
+                        if(user.isGovt.equals("false")) {
+                            mUpdateStatusButton.setVisibility(View.GONE);
+                            mUpdateForm.setVisibility(View.GONE);
+                        }
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+    }
     private void postComment() {
         final String uid = getUid();
         FirebaseDatabase.getInstance().getReference().child("users").child(uid)

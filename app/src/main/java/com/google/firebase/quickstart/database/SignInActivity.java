@@ -154,7 +154,8 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
     // [START basic_write]
     private void writeNewUser(String userId, String name, String email) {
-        User user = new User(name, email);
+        //Deafult registration is non-govt until verified by CityCouncil team
+        User user = new User(name, email, "false");
 
         mDatabase.child("users").child(userId).setValue(user);
     }
