@@ -1,6 +1,7 @@
 package com.google.firebase.quickstart.database;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -121,6 +122,14 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                 mResponseView.setText("Official Response:");
                 if(post.status != null)
                     mStatusView.setText(post.status);
+
+                if(mStatusView.getText().toString().equals("Completed"))
+                    mStatusView.setTextColor(Color.GREEN);
+                else if(mStatusView.getText().toString().equals("Denied"))
+                    mStatusView.setTextColor(Color.RED);
+                else
+                    mStatusView.setTextColor(Color.parseColor("#FFA000"));
+
                 if(post.response != null)
                     mResponseBodyView.setText(post.response);
             }
